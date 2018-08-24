@@ -15,14 +15,37 @@
 
   <!-- <section></section> New Budget Section
 
-  <section></section> Pie Chart Section
+  <section></section> Pie Chart Section -->
 
-  <section></section> Add New Expense Section
+  <section> <!-- Add Expense Section -->
+    <form name="newExpenseForm">
+      <input type="date" required>
+      <input type="number" required>
+      <select id="formCategory">
+        <option value="Rent">Rent</option>
+        <option value="Bills">Bills</option>
+        <option value="Groceries">Groceries</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Personal Care">Personal Care</option>
+        <option value="Misc">Misc</option>
+      </select>
+    </form>
+  </section>
 
-  <section></section> Expense Table Section
+  <section>  <!-- Table Section -->
+    <table id="expenseTable">
+      <tr>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Memo</th>
+        <th>Balance</th>
+      </tr>
+    </table>
+  </section>
 
-  <footer></footer> -->
-  
+  <footer></footer>
+
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/scripts.js"></script>
