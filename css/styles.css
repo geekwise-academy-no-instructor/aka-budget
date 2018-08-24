@@ -1,0 +1,13 @@
+.input-field {
+  margin-right: 15px;
+  line-height: inherit;
+}
+
+table, th, td {
+  border: 1px solid #000000;
+  padding: 5px;
+}
+
+#expenseTable {
+  margin-top: 30px;
+}

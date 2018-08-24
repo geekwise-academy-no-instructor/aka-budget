@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>AKABudget</title>
-  <link rel="stylesheet" src="css/bootstrap.min.css">
-  <link rel="stylesheet" src="css/styles.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <header>
@@ -18,30 +18,40 @@
   <section></section> Pie Chart Section -->
 
   <section> <!-- Add Expense Section -->
-    <form name="newExpenseForm">
-      <input type="date" required>
-      <input type="number" required>
-      <select id="formCategory">
-        <option value="Rent">Rent</option>
-        <option value="Bills">Bills</option>
-        <option value="Groceries">Groceries</option>
-        <option value="Entertainment">Entertainment</option>
-        <option value="Personal Care">Personal Care</option>
-        <option value="Misc">Misc</option>
-      </select>
-    </form>
+    <div class="container">
+      <form id="newExpenseForm" name="newExpenseForm">
+        <label for="date">Date</label>
+        <input type="date" name="date" class="input-field" required>
+        <label for="amount">Amount</label>
+        <input type="number" name="amount" class="input-field" required>
+        <select id="formCategory" class="input-field" required>
+          <option value="Choose a Category" selected>Choose a Category</option>
+          <option value="Rent">Rent</option>
+          <option value="Bills">Bills</option>
+          <option value="Groceries">Groceries</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Personal Care">Personal Care</option>
+          <option value="Misc">Misc</option>
+        </select>
+        <label for="memo">Memo(optional)</label>
+        <input type="text" name="memo" class="input-field">
+        <button type="submit" class="btn btn-primary">Add New Expense</button>
+      </form>
+    </div>
   </section>
 
   <section>  <!-- Table Section -->
-    <table id="expenseTable">
-      <tr>
-        <th>Date</th>
-        <th>Amount</th>
-        <th>Category</th>
-        <th>Memo</th>
-        <th>Balance</th>
-      </tr>
-    </table>
+    <div class="container">
+      <table id="expenseTable">
+        <tr>
+          <th>Date</th>
+          <th>Amount</th>
+          <th>Category</th>
+          <th>Memo</th>
+          <th>Balance</th>
+        </tr>
+      </table>
+    </div>
   </section>
 
   <footer></footer>
