@@ -1,6 +1,5 @@
 .input-field {
-  margin-right: 15px;
-  line-height: inherit;
+  margin-right: 34px;
 }
 
 table, th, td {
@@ -8,6 +7,7 @@ table, th, td {
   padding: 5px;
 }
 
-#expenseTable {
+table, form {
   margin-top: 30px;
+  width: 100%;
 }

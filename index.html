@@ -24,7 +24,7 @@
         <input type="date" name="date" class="input-field" required>
         <label for="amount">Amount</label>
         <input type="number" name="amount" class="input-field" required>
-        <select id="formCategory" class="input-field" required>
+        <select id="formCategory" name="category" class="input-field" required>
           <option value="Choose a Category" selected>Choose a Category</option>
           <option value="Rent">Rent</option>
           <option value="Bills">Bills</option>
@@ -35,21 +35,23 @@
         </select>
         <label for="memo">Memo(optional)</label>
         <input type="text" name="memo" class="input-field">
-        <button type="submit" class="btn btn-primary">Add New Expense</button>
+        <button id="newExpenseButton" type="submit" class="btn btn-primary">Add New Expense</button>
       </form>
     </div>
   </section>
 
   <section>  <!-- Table Section -->
     <div class="container">
-      <table id="expenseTable">
-        <tr>
-          <th>Date</th>
-          <th>Amount</th>
-          <th>Category</th>
-          <th>Memo</th>
-          <th>Balance</th>
-        </tr>
+      <table>
+        <tbody id="expenseTable">
+          <tr>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Memo</th>
+            <th>Balance</th>
+          </tr>
+        </tbody>
       </table>
     </div>
   </section>
