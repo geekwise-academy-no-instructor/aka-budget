@@ -28,36 +28,27 @@
 		        <h4 class="modal-title" id="myModalLabel">New Monthly Budget</h4>
 		      </div>
 		      <div class="modal-body">
-		        <form action="" class="new-budget-form">
-							<div class="container">
-								<div class="row">
-									<div class="col-xs-2">
-										<label for="totalIncome">Total Income</label><br>
-										<label for="rent">Rent</label><br>
-										<label for="bills">Bills</label><br>
-										<label for="groceries">Groceries</label><br>
-										<label for="entertainment">Entertainment</label><br>
-										<label for="personalCare">Personal Care</label><br/>
-										<label for="misc">Misc</label>
-									</div>
-									<div class="col-xs-2">
-										<input name="totalIncome" type="number"><br>
-					        	<input name="rent" type="number"><br>
-										<input name="bills" type="number"><br>
-										<input name="groceries" type="number"><br>
-										<input name="entertainment" type="number"><br>
-										<input name="personalCare" type="number"><br>
-										<input name="misc" type="number">
-									</div>
-								</div>
-							</div>
-							<button type="button" class="btn btn-default" id="addNewBudgetBtn">submit</button>
-		        </form>
+						<form action="" name="newBudgetForm" method="get">
+							<label for="totalIncome">Total Income</label>
+							<input name="income" id="incomeInput" type="number"><br>
+							<label for="rent">Rent</label>
+							<input name="rent" id="rentInput" type="number"><br>
+							<label for="bills">Bills</label>
+							<input name="bills" id="billsInput" type="number"><br>
+							<label for="groceries">Groceries</label>
+							<input name="groceries" id="groceriesInput" type="number"><br>
+							<label for="entertainment">Entertainment</label>
+							<input name="entertainment" id="entertainInput" type="number"><br>
+							<label for="personalCare">Personal Care</label>
+							<input name="personalCare" id="personCareInput" type="number"><br/>
+							<label for="misc">Misc</label>
+							<input name="misc" id="miscInput" type="number">
+						</form>
 		      </div>
-		      <!-- <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        <button type="button" class="btn btn-primary">Save changes</button>
-		      </div> -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" id="newBudgetBtn" class="btn btn-primary">Submit</button>
+					</div>
 		    </div>
 		  </div>
 		</div>
