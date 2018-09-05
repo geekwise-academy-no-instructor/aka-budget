@@ -58,6 +58,48 @@
 	<!-- section for add new expense inputs -->
 
 	<!-- section for expense table  -->
+
+	<!-- Add New Expense Form -->
+	<section>
+    <div class="container">
+      <form id="newExpenseForm" name="newExpenseForm">
+        <label for="date">Date</label>
+        <input type="date" name="date" class="input-field" required>
+        <label for="amount">Amount</label>
+        <input type="number" name="amount" class="input-field" required>
+        <select id="formCategory" name="category" class="input-field" required>
+          <option value="Choose a Category" selected>Choose a Category</option>
+          <option value="Rent">Rent</option>
+          <option value="Bills">Bills</option>
+          <option value="Groceries">Groceries</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Personal Care">Personal Care</option>
+          <option value="Misc">Misc</option>
+        </select>
+        <label for="memo">Memo(optional)</label>
+        <input type="text" name="memo" class="input-field">
+        <button id="newExpenseButton" type="submit" class="btn btn-primary">Add New Expense</button>
+      </form>
+    </div>
+  </section>
+
+<!-- Expense Table -->
+  <section>
+    <div class="container">
+      <table>
+        <tbody id="expenseTable">
+          <tr>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Memo</th>
+            <th>Balance</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
 	<footer></footer>
 
 	<script src="js/jquery-3.3.1.min.js"></script>

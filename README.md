@@ -7,19 +7,14 @@ A budgeting app designed to take in a user's income and the amount they desire t
 
 Work Done to Date:
 Wireframe
-
-Work To Do:
 HTML Basic Skeleton
 New Budget Modal (HTML + CSS)
 New Budget Modal (JS)
-Pie Chart - Universal
-Pie Chart - Rent
-Pie Chart - Bills
-Pie Chart - Groceries
-Pie Chart - Entertainment
-Pie Chart - Personal Care
-Pie Chart - Miscellaneous
 Add New Expense Form (HTML + CSS)
 Add New Expense Form (JS)
 Expense History Table (HTML + CSS)
 Expense History Table (JS)
+
+Work To Do:
+Finish Pie charts & link them to New Budget and Expense table
+Styling with CSS/Bootstrap

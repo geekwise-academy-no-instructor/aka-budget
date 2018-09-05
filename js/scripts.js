@@ -27,7 +27,7 @@ let date = newExpenseForm.date;
 let amount = newExpenseForm.amount;
 let category = newExpenseForm.category;
 let memo = newExpenseForm.memo;
-let balance = parseInt(incomeInput.value);
+let balance;
 
 /*
 let augustBudget = {
@@ -50,6 +50,7 @@ newBudgetBtn.addEventListener("click", e => {
 	entertainInputVal = parseInt(entertainInput.value);
 	personCareInputVal = parseInt(personCareInput.value);
 	miscInputVal = parseInt(miscInput.value);
+  balance = incomeInputVal;
 
 	inputArray = [incomeInputVal, rentInputVal, billsInputVal, groceriesInputVal, entertainInputVal, personCareInputVal, miscInputVal];
 	totalBudget = rentInputVal + billsInputVal + groceriesInputVal + entertainInputVal + personCareInputVal + miscInputVal;
@@ -68,6 +69,8 @@ newBudgetBtn.addEventListener("click", e => {
 			alert("You didn't enter a valid number.");
 		}
 	};
+  newBudgetForm.reset();
+  $('#myModal').modal('hide');
 });
 
 newExpenseForm.addEventListener("submit", (e) => {
@@ -88,8 +91,9 @@ newExpenseForm.addEventListener("submit", (e) => {
   newRow.appendChild(memoData);
   memoData.textContent = memo.value;
   newRow.appendChild(balanceData);
-  balance = parseInt(balance.value) - parseInt(amount.value);
-  balanceData.textContent = balance.value;
-  balance = parseInt(balance.value);
+  newBalance = balance - parseInt(amount.value);
+  balanceData.textContent = newBalance;
+  balance = newBalance;
   newExpenseForm.reset();
+  console.log(newBalance);
 });
