@@ -22,7 +22,7 @@
    background-color: red;
 }
 
-.food-dot {
+.bills-dot {
    background-color: orange;
 }
 
@@ -34,6 +34,14 @@
    background-color: purple;
 }
 
+.personal-care-dot {
+   background-color: skyblue;
+}
+
+.misc-dot {
+   background-color: pink;
+}
+
 .legend-total{
    display: inline-block;
 }
@@ -42,7 +50,7 @@
    display: inline-block;
 }
 
-.legend-food{
+.legend-bills{
    display: inline-block;
 }
 
@@ -51,5 +59,13 @@
 }
 
 .legend-groceries{
+   display: inline-block;
+}
+
+.legend-personal-care{
+   display: inline-block;
+}
+
+.legend-misc{
    display: inline-block;
 }
