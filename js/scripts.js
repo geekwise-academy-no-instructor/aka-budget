@@ -6,7 +6,7 @@ let date = newExpenseForm.date;
 let amount = newExpenseForm.amount;
 let category = newExpenseForm.category;
 let memo = newExpenseForm.memo;
-// let balance = income.value - amount.value;
+let balance = incomeInput.value - amount.value;
 
 // Functions
 
@@ -28,6 +28,6 @@ newExpenseForm.addEventListener("submit", (e) => {
   newRow.appendChild(memoData);
   memoData.textContent = memo.value;
   newRow.appendChild(balanceData);
-  balanceData.textContent = "N/A";
+  balanceData.textContent = balance.value;
   newExpenseForm.reset();
 });
