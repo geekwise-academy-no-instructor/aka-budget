@@ -10,17 +10,55 @@
 </head>
 <body>
 	<header>
-		<h1 class="title">AKABudger </h1>
+		<h1 class="title">AKABudget</h1>
 	</header>
 
 	<!-- section for new budget button & modal -->
 
 	<!-- section for pie chart and legend -->
-
+	<section class="pie-chart-and-legend">
+		<div class="row">
+			<div class="col-md-6">
+				<div id="piechart"></div>
+				<div class="hidden-legend">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div id="legend">
+					<h3>August Budget</h3>
+					<div class="legend-total">
+						<span class="dot totalRemaining-dot"></span>
+						<label>Total Remaining</label>
+					</div>
+					<br>
+					<div class="legend-rent">
+						<span class="dot rent-dot"></span>
+						<label>Rent</label>
+					</div>
+					<br>
+					<div class="legend-food">
+						<span class="dot food-dot"></span>
+						<label>Food</label>
+					</div>
+					<br>
+					<div class="legend-entertainment">
+						<span class="dot entertainment-dot"></span>
+						<label>Entertainment</label>
+					</div>
+					<br>
+					<div class="legend-groceries">
+						<span class="dot groceries-dot"></span>
+						<label>Groceries</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 	<!-- section for add new expense inputs -->
-
+<button type="button" name="button">button</button>
 	<!-- section for expense table  -->
 	<footer></footer>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/scripts.js" charset="utf-8"></script>
