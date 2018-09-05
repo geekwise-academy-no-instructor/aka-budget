@@ -1,0 +1,13 @@
+.input-field {
+  margin-right: 34px;
+}
+
+table, th, td {
+  border: 1px solid #000000;
+  padding: 5px;
+}
+
+table, form {
+  margin-top: 30px;
+  width: 100%;
+}
