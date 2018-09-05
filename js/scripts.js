@@ -20,6 +20,15 @@ let miscInputVal;
 let totalBudget;
 let inputArray;
 
+//Variables for Expense table
+const newExpenseForm = document.forms.newExpenseForm;
+let expenseTable = document.getElementById("expenseTable");
+let date = newExpenseForm.date;
+let amount = newExpenseForm.amount;
+let category = newExpenseForm.category;
+let memo = newExpenseForm.memo;
+let balance = parseInt(incomeInput.value);
+
 /*
 let augustBudget = {
 	income: incomeInputVal,
@@ -32,6 +41,7 @@ let augustBudget = {
 };
 */
 
+// Functions
 newBudgetBtn.addEventListener("click", e => {
 	incomeInputVal = parseInt(incomeInput.value);
 	rentInputVal = parseInt(rentInput.value);
@@ -58,4 +68,28 @@ newBudgetBtn.addEventListener("click", e => {
 			alert("You didn't enter a valid number.");
 		}
 	};
+});
+
+newExpenseForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let newRow = document.createElement("tr");
+  let dateData = document.createElement("td");
+  let amountData = document.createElement("td");
+  let categoryData = document.createElement("td");
+  let memoData = document.createElement("td");
+  let balanceData = document.createElement("td");
+  expenseTable.insertBefore(newRow, expenseTable.childNodes[2]);
+  newRow.appendChild(dateData);
+  dateData.textContent = date.value;
+  newRow.appendChild(amountData);
+  amountData.textContent = amount.value;
+  newRow.appendChild(categoryData);
+  categoryData.textContent = category.value;
+  newRow.appendChild(memoData);
+  memoData.textContent = memo.value;
+  newRow.appendChild(balanceData);
+  balance = parseInt(balance.value) - parseInt(amount.value);
+  balanceData.textContent = balance.value;
+  balance = parseInt(balance.value);
+  newExpenseForm.reset();
 });
