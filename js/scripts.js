@@ -45,8 +45,11 @@ newBudgetBtn.addEventListener("click", e => {
 	totalBudget = rentInputVal + billsInputVal + groceriesInputVal + entertainInputVal + personCareInputVal + miscInputVal;
 
 	for(index = 0; index < inputArray.length; index++){
-		if(index === !NaN && index >= 0){
+		if(!isNaN(inputArray[index]) && inputArray[index] >= 0){
 			if(totalBudget === incomeInputVal){
+				/*this if statement will:
+				1. Provide starting balances for the budget and display
+				them in the piechart legend. */
 				console.log("yay!");
 			} else{
 				alert("Your budget doesn't equal your income.");
