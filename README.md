@@ -14,7 +14,7 @@ Add New Expense Form (HTML + CSS)
 Add New Expense Form (JS)
 Expense History Table (HTML + CSS)
 Expense History Table (JS)
+Finish Pie charts & link them to New Budget and Expense table
 
 Work To Do:
-Finish Pie charts & link them to New Budget and Expense table
 Styling with CSS/Bootstrap
