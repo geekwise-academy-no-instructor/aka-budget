@@ -15,9 +15,11 @@ var budget = {
    miscSpent : 40
 };
 
+//****************CODE TO ADD TO PROJECT*****************
 var labels = document.querySelectorAll('label');
 var saveLabels = [];
 var i = 0;
+var subLegend = document.querySelector('.hidden-legend');
 
 //click event calls drawChart(index for click)
 var totalLabel = document.querySelector('.legend-total');
@@ -28,26 +30,34 @@ var groceriesLabel = document.querySelector('.legend-groceries');
 var personalCareLabel = document.querySelector('.legend-personal-care');
 var miscLabel = document.querySelector('.legend-misc');
 
+//onclick events to view different charts
 totalLabel.onclick = function changeChart(){
       google.charts.setOnLoadCallback(function () {drawChart(0);})
+      subLegend.style.visibility = "hidden";
 };
 rentLabel.onclick = function changeChart(){
       google.charts.setOnLoadCallback(function () {drawChart(1);})
+      subLegend.style.visibility = "visible";
 };
 billsLabel.onclick = function changeChart(){
       google.charts.setOnLoadCallback(function () {drawChart(2);})
+      subLegend.style.visibility = "visible";
 };
 entertainmentLabel.onclick = function changeChart(){
       google.charts.setOnLoadCallback(function () {drawChart(3);})
+      subLegend.style.visibility = "visible";
 };
 groceriesLabel.onclick = function changeChart(){
       google.charts.setOnLoadCallback(function () {drawChart(4);})
+      subLegend.style.visibility = "visible";
 };
 personalCareLabel.onclick = function changeChart(){
       google.charts.setOnLoadCallback(function () {drawChart(5);})
+      subLegend.style.visibility = "visible";
 };
 miscLabel.onclick = function changeChart(){
       google.charts.setOnLoadCallback(function () {drawChart(6);})
+      subLegend.style.visibility = "visible";
 };
 
 
@@ -141,43 +151,43 @@ function drawChart(x) {
    if(x == 1){
       var data = google.visualization.arrayToDataTable([
       ['Category', 'Budget'],
-      ['Rent Budget Remaining', getDifference(budget.rent, budget.rentSpent)],
-      ['Rent Budget Spent', budget.rentSpent]
+      ['Rent Budget Remaining $' + getDifference(budget.rent, budget.rentSpent), getDifference(budget.rent, budget.rentSpent)],
+      ['Rent Budget Spent $' + budget.rentSpent, budget.rentSpent]
       ]);
    }
    else if(x == 2){
       var data = google.visualization.arrayToDataTable([
       ['Category', 'Budget'],
-      ['Bills Budget Remaining', getDifference(budget.bills, budget.billsSpent)],
-      ['Bills Budget Spent', budget.billsSpent]
+      ['Bills Budget Remaining $' + getDifference(budget.bills, budget.billsSpent), getDifference(budget.bills, budget.billsSpent)],
+      ['Bills Budget Spent $' + budget.billsSpent, budget.billsSpent]
       ]);
    }
    else if(x == 3){
       var data = google.visualization.arrayToDataTable([
       ['Category', 'Budget'],
-      ['Entertainment Budget Remaining', getDifference(budget.entertainment, budget.entertainmentSpent)],
-      ['Entertainment Budget Spent', budget.entertainmentSpent]
+      ['Entertainment Budget Remaining $' + getDifference(budget.entertainment, budget.entertainmentSpent), getDifference(budget.entertainment, budget.entertainmentSpent)],
+      ['Entertainment Budget Spent $' + budget.entertainmentSpent, budget.entertainmentSpent]
       ]);
    }
    else if(x == 4){
       var data = google.visualization.arrayToDataTable([
       ['Category', 'Budget'],
-      ['Groceries Budget Remaining', getDifference(budget.groceries, budget.groceriesSpent)],
-      ['Groceries Budget Spent', budget.groceriesSpent]
+      ['Groceries Budget Remaining $' + getDifference(budget.groceries, budget.groceriesSpent), getDifference(budget.groceries, budget.groceriesSpent)],
+      ['Groceries Budget Spent $' + budget.groceriesSpent, budget.groceriesSpent]
       ]);
    }
    else if(x == 5){
       var data = google.visualization.arrayToDataTable([
       ['Category', 'Budget'],
-      ['Personal Care Budget Remaining', getDifference(budget.personalCare, budget.personalCareSpent)],
-      ['Persoanl Care Budget Spent', budget.personalCareSpent]
+      ['Personal Care Budget Remaining $' + getDifference(budget.personalCare, budget.personalCareSpent), getDifference(budget.personalCare, budget.personalCareSpent)],
+      ['Persoanl Care Budget Spent $' + budget.personalCare, budget.personalCareSpent]
       ]);
    }
    else if(x == 6){
       var data = google.visualization.arrayToDataTable([
       ['Category', 'Budget'],
-      ['Misc Budget Remaining', getDifference(budget.misc, budget.miscSpent)],
-      ['Misc Budget Spent', budget.miscSpent]
+      ['Misc Budget Remaining $' + getDifference(budget.misc, budget.miscSpent), getDifference(budget.misc, budget.miscSpent)],
+      ['Misc Budget Spent $' + budget.miscSpent, budget.miscSpent]
       ]);
    }
    else{
@@ -205,6 +215,9 @@ function drawChart(x) {
   chart.draw(data, options);
 }
 
+
+//*******************END OF CODE TO ADD**************
+
 var btnIncrease = document.querySelector('button');
 
 // Test to adjust graph by changing billsSpent
@@ -218,7 +231,3 @@ btnIncrease.onclick = function increaseBills(){
    legendValues();
    google.charts.setOnLoadCallback(function() {drawChart(0);});
 }
-
-$(window).resize(function(){
-  google.charts.setOnLoadCallback(function () {drawChart(0);});
-});

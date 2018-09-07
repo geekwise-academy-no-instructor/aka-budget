@@ -69,3 +69,7 @@
 .legend-misc{
    display: inline-block;
 }
+
+.hidden-legend{
+   visibility: hidden;
+}
