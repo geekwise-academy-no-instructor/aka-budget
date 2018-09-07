@@ -38,9 +38,9 @@
 							<label for="groceries">Groceries</label>
 							<input name="groceries" id="groceriesInput" type="number"><br>
 							<label for="entertainment">Entertainment</label>
-							<input name="entertainment" id="entertainInput" type="number"><br>
+							<input name="entertainment" id="entertainmentInput" type="number"><br>
 							<label for="personalCare">Personal Care</label>
-							<input name="personalCare" id="personCareInput" type="number"><br/>
+							<input name="personalCare" id="personalCareInput" type="number"><br/>
 							<label for="misc">Misc</label>
 							<input name="misc" id="miscInput" type="number">
 						</form>
@@ -54,7 +54,60 @@
 		</div>
 	</section>
 	<!-- section for pie chart and legend -->
+	<section class="pie-chart-and-legend">
+		<div class="row">
+			<div class="col-md-6">
+				<div id="piechart"></div>
+				<div class="hidden-legend">
+					<span class="dot totalRemaining-dot"></span>
+					<p>Total Remaining</p>
 
+					<span class="dot rent-dot"></span>
+					<p>Spent</p>
+
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div id="legend">
+					<h3>August Budget</h3>
+					<div class="legend-total">
+						<span class="dot totalRemaining-dot"></span>
+						<label class="legend-labels">Total Remaining</label>
+					</div>
+					<br>
+					<div class="legend-rent">
+						<span class="dot rent-dot"></span>
+						<label class="legend-labels">Rent</label>
+					</div>
+					<br>
+					<div class="legend-bills">
+						<span class="dot bills-dot"></span>
+						<label class="legend-labels">Bills</label>
+					</div>
+					<br>
+					<div class="legend-entertainment">
+						<span class="dot entertainment-dot"></span>
+						<label class="legend-labels">Entertainment</label>
+					</div>
+					<br>
+					<div class="legend-groceries">
+						<span class="dot groceries-dot"></span>
+						<label class="legend-labels">Groceries</label>
+					</div>
+					<br>
+					<div class="legend-personal-care">
+						<span class="dot personal-care-dot"></span>
+						<label class="legend-labels">Personal Care</label>
+					</div>
+					<br>
+					<div class="legend-misc">
+						<span class="dot misc-dot"></span>
+						<label class="legend-labels">Misc</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<!-- Add New Expense Form -->
 	<section>
@@ -70,7 +123,7 @@
           <option value="Bills">Bills</option>
           <option value="Groceries">Groceries</option>
           <option value="Entertainment">Entertainment</option>
-          <option value="Personal Care">Personal Care</option>
+          <option value="PersonalCare">Personal Care</option>
           <option value="Misc">Misc</option>
         </select>
         <label for="memo">Memo(optional)</label>
@@ -99,6 +152,7 @@
 
 	<footer></footer>
 
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/scripts.js" charset="utf-8"></script>

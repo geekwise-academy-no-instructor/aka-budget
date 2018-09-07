@@ -11,3 +11,79 @@ table, form {
   margin-top: 30px;
   width: 100%;
 }
+
+#piechart {
+  min-height: 450px;
+}
+
+.row {
+  margin:0 !important;
+}
+
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.totalRemaining-dot{
+   background-color: blue;
+}
+
+.rent-dot {
+   background-color: red;
+}
+
+.bills-dot {
+   background-color: orange;
+}
+
+.entertainment-dot{
+   background-color: green;
+}
+
+.groceries-dot{
+   background-color: purple;
+}
+
+.personal-care-dot {
+   background-color: skyblue;
+}
+
+.misc-dot {
+   background-color: pink;
+}
+
+.legend-total{
+   display: inline-block;
+}
+
+.legend-rent{
+   display: inline-block;
+}
+
+.legend-bills{
+   display: inline-block;
+}
+
+.legend-entertainment{
+   display: inline-block;
+}
+
+.legend-groceries{
+   display: inline-block;
+}
+
+.legend-personal-care{
+   display: inline-block;
+}
+
+.legend-misc{
+   display: inline-block;
+}
+
+.hidden-legend{
+   visibility: hidden;
+}
