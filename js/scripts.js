@@ -60,7 +60,6 @@ miscLabel.onclick = function changeChart(){
       subLegend.style.visibility = "visible";
 };
 
-
 labels.forEach(function(element) {
   saveLabels[i] = element.innerText;
   i++;
@@ -143,6 +142,7 @@ function getRemaining(){
 }
 
 // Load google charts
+
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(function() {drawChart(0);});
 
