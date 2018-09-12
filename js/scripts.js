@@ -28,6 +28,8 @@ let amount = newExpenseForm.amount;
 let category = newExpenseForm.category;
 let memo = newExpenseForm.memo;
 let balance;
+let newRow;
+let newTableData;
 let rentSpent = 0;
 let billsSpent = 0;
 let groceriesSpent = 0;
@@ -73,6 +75,10 @@ newBudgetBtn.addEventListener("click", e => {
 	miscInputVal = parseInt(miscInput.value);
   balance = incomeInputVal;
 
+	newRow = document.createElement("tr");
+	newRow.classList.add('new-row');
+	newTableData = document.querySelectorAll('.new-row');
+
 	inputArray = [incomeInputVal, rentInputVal, billsInputVal, groceriesInputVal, entertainmentInputVal, personalCareInputVal, miscInputVal];
 	totalBudget = rentInputVal + billsInputVal + groceriesInputVal + entertainmentInputVal + personalCareInputVal + miscInputVal;
 
@@ -90,6 +96,10 @@ newBudgetBtn.addEventListener("click", e => {
 			alert("You didn't enter a valid number.");
 		}
 	};
+	if(child !== null) {
+		expenseTable.removeChild(newTableData);
+		console.log("I'm so triggered");
+	};
   newBudgetForm.reset();
   $('#myModal').modal('hide');
 	google.charts.setOnLoadCallback(function() {drawChart(0);});
@@ -98,7 +108,9 @@ newBudgetBtn.addEventListener("click", e => {
 
 newExpenseForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  let newRow = document.createElement("tr");
+  newRow = document.createElement("tr");
+	newRow.classList.add('new-row');
+	newTableData = document.querySelectorAll('.new-row');
   let dateData = document.createElement("td");
   let amountData = document.createElement("td");
   let categoryData = document.createElement("td");
@@ -144,7 +156,7 @@ newExpenseForm.addEventListener("submit", (e) => {
 	legendValues();
 	newExpenseForm.reset();
 }); // End of Submit Event
-
+console.log(newTableData);
 //Pie Chart Data
 
 //onclick events to view different charts
