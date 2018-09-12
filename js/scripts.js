@@ -28,6 +28,8 @@ let amount = newExpenseForm.amount;
 let category = newExpenseForm.category;
 let memo = newExpenseForm.memo;
 let balance;
+let newRow;
+let newTableData;
 let rentSpent = 0;
 let billsSpent = 0;
 let groceriesSpent = 0;
@@ -80,6 +82,10 @@ newBudgetBtn.addEventListener("click", e => {
 	miscInputVal = parseInt(miscInput.value);
   balance = incomeInputVal;
 
+	newRow = document.createElement("tr");
+	newRow.classList.add('new-row');
+	newTableData = document.querySelectorAll('.new-row');
+
 	inputArray = [incomeInputVal, rentInputVal, billsInputVal, groceriesInputVal, entertainmentInputVal, personalCareInputVal, miscInputVal];
 	totalBudget = rentInputVal + billsInputVal + groceriesInputVal + entertainmentInputVal + personalCareInputVal + miscInputVal;
 
@@ -94,6 +100,10 @@ newBudgetBtn.addEventListener("click", e => {
 			alert("You didn't enter a valid number.");
 		}
 	};
+	if(child !== null) {
+		expenseTable.removeChild(newTableData);
+		console.log("I'm so triggered");
+	};
   newBudgetForm.reset();
   $('#myModal').modal('hide');
 	google.charts.setOnLoadCallback(function() {drawChart(0);});
@@ -103,11 +113,13 @@ newBudgetBtn.addEventListener("click", e => {
 newExpenseForm.addEventListener("submit", (e) => {
   e.preventDefault();
   newRow = document.createElement("tr");
-  dateData = document.createElement("td");
-  amountData = document.createElement("td");
-  categoryData = document.createElement("td");
-  memoData = document.createElement("td");
-  balanceData = document.createElement("td");
+	newRow.classList.add('new-row');
+	newTableData = document.querySelectorAll('.new-row');
+  let dateData = document.createElement("td");
+  let amountData = document.createElement("td");
+  let categoryData = document.createElement("td");
+  let memoData = document.createElement("td");
+  let balanceData = document.createElement("td");
   expenseTable.insertBefore(newRow, expenseTable.childNodes[2]);
   newRow.appendChild(dateData);
   dateData.textContent = date.value;
@@ -148,7 +160,7 @@ newExpenseForm.addEventListener("submit", (e) => {
 	legendValues();
 	newExpenseForm.reset();
 }); // End of Submit Event
-
+console.log(newTableData);
 //Pie Chart Data
 
 //onclick events to view different charts
