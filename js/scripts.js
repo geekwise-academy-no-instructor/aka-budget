@@ -52,19 +52,9 @@ var groceriesLabel = document.querySelector('.legend-groceries');
 var personalCareLabel = document.querySelector('.legend-personal-care');
 var miscLabel = document.querySelector('.legend-misc');
 
-/*
-let augustBudget = {
-	income: incomeInputVal,
-	rent: rentInputVal,
-	bills: billsInputVal,
-	groceries: groceriesInputVal,
-	entertainment: entertainmentInputVal,
-	personalCare: personalCareInputVal,
-	misc: miscInputVal
-};
-*/
-
 // Functions
+
+// Create a New Budget, Clear Old Data
 newBudgetBtn.addEventListener("click", e => {
 	incomeInputVal = parseInt(incomeInput.value);
 	rentInputVal = parseInt(rentInput.value);
@@ -114,6 +104,7 @@ newBudgetBtn.addEventListener("click", e => {
 	legendValues();
 });
 
+// Add New Expense to Table & Pie Chart
 newExpenseForm.addEventListener("submit", (e) => {
   e.preventDefault();
   newRow = document.createElement("tr");
@@ -165,6 +156,7 @@ newExpenseForm.addEventListener("submit", (e) => {
 	newExpenseForm.reset();
 }); // End of Submit Event
 console.log(newTableData);
+
 //Pie Chart Data
 
 //onclick events to view different charts
@@ -272,11 +264,6 @@ function legendValues(){
 function getDifference(x, y){
    return x-y;
 }
-
-// Get total budget remaining
-// function getRemaining(){
-//    return totalBudget - (rentSpent + billsSpent + entertainmentSpent + groceriesSpent + personalCareSpent + miscSpent);
-// }
 
 // Load google charts
 google.charts.load('current', {'packages':['corechart']});
