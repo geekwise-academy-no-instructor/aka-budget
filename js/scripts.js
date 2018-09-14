@@ -96,11 +96,19 @@ newBudgetBtn.addEventListener("click", e => {
 			alert("You didn't enter a valid number.");
 		}
 	};
-	if(child !== null) {
-		expenseTable.removeChild(newTableData);
+	if(newTableData.length !== 0) {
+		for(i = 0; i < newTableData.length; i++) {
+			expenseTable.removeChild(newTableData[i]);
+		};
 		console.log("I'm so triggered");
 	};
   newBudgetForm.reset();
+	rentSpent = 0;
+	billsSpent = 0;
+	groceriesSpent = 0;
+	entertainmentSpent = 0;
+	personalCareSpent = 0;
+	miscSpent = 0;
   $('#myModal').modal('hide');
 	google.charts.setOnLoadCallback(function() {drawChart(0);});
 	legendValues();
