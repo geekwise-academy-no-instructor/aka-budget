@@ -30,19 +30,29 @@
 		      <div class="modal-body">
 						<form action="" name="newBudgetForm" method="get">
 							<label for="totalIncome">Total Income</label>
-							<input name="income" id="incomeInput" type="number"><br>
+							<input name="income" id="incomeInput" type="number" step="0.01"><br>
 							<label for="rent">Rent</label>
-							<input name="rent" id="rentInput" type="number"><br>
+							<input name="rent" id="rentInput" type="number" step="0.01"><br>
 							<label for="bills">Bills</label>
-							<input name="bills" id="billsInput" type="number"><br>
+							<input name="bills" id="billsInput" type="number" step="0.01"><br>
 							<label for="groceries">Groceries</label>
-							<input name="groceries" id="groceriesInput" type="number"><br>
+							<input name="groceries" id="groceriesInput" type="number" step="0.01"><br>
 							<label for="entertainment">Entertainment</label>
-							<input name="entertainment" id="entertainmentInput" type="number"><br>
+							<input name="entertainment" id="entertainmentInput" type="number" step="0.01"><br>
 							<label for="personalCare">Personal Care</label>
-							<input name="personalCare" id="personalCareInput" type="number"><br/>
+							<input name="personalCare" id="personalCareInput" type="number" step="0.01"><br/>
 							<label for="misc">Misc</label>
-							<input name="misc" id="miscInput" type="number">
+							<input name="misc" id="miscInput" type="number" step="0.01">
+							<select name="budgetType" id="budgetTypeInput" class="input-field" required>
+			          <option value="BudgetType" selected>Select Budget Type</option>
+			          <option value="Weekly">Weekly</option>
+			          <option value="Two Week">Two Week</option>
+								<option value="Monthly">Monthly</option>
+			        </select> <br>
+							<label for="date">Start Date</label>
+			        <input type="date" name="startDate" id="startDate" class="input-field" required>
+							<label for="date">End Date</label>
+			        <input type="date" name="endDate" id="endDate" class="input-field" required>
 						</form>
 		      </div>
 					<div class="modal-footer">
@@ -69,7 +79,8 @@
 			</div>
 			<div class="col-md-6">
 				<div id="legend">
-					<h3>Monthly Budget</h3>
+					<h3 id="legendHeader"></h3>
+					<h4 id="budgetDates"></h4>
 					<div class="legend-total">
 						<span class="dot totalRemaining-dot"></span>
 						<label class="legend-labels">Total Remaining</label>
@@ -116,7 +127,7 @@
         <label for="date">Date</label>
         <input type="date" name="date" class="input-field" required>
         <label for="amount">Amount</label>
-        <input type="number" name="amount" class="input-field" required>
+        <input type="number" step="0.01" name="amount" class="input-field" required>
         <select id="formCategory" name="category" class="input-field" required>
           <option value="Choose a Category" selected>Choose a Category</option>
           <option value="Rent">Rent</option>
