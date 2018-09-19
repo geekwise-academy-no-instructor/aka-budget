@@ -31,7 +31,7 @@ let date = newExpenseForm.date;
 let amount = newExpenseForm.amount;
 let category = newExpenseForm.category;
 let memo = newExpenseForm.memo;
-let balance;
+let balance = 0;
 let newRow;
 let newTableData;
 let rentSpent = 0;
@@ -108,8 +108,11 @@ newBudgetBtn.addEventListener("click", e => {
 	personalCareSpent = 0;
 	miscSpent = 0;
   $('#myModal').modal('hide');
-	google.charts.setOnLoadCallback(function() {drawChart(0);});
-	legendValues();
+		google.charts.setOnLoadCallback(function() {drawChart(0);});
+		legendValues();
+	insertStartValuesToLocalStorage();
+  insertSpentValuesToLocalStorage();
+  storeTable();
 });
 
 // Add New Expense to Table & Pie Chart
@@ -160,10 +163,11 @@ newExpenseForm.addEventListener("submit", (e) => {
 			break;
 	};
 	google.charts.setOnLoadCallback(function() {drawChart(0);});
-	legendValues();
+		legendValues();
+	insertSpentValuesToLocalStorage();
+  storeTable();
 	newExpenseForm.reset();
 }); // End of Submit Event
-console.log(newTableData);
 
 //Pie Chart Data
 
@@ -210,6 +214,8 @@ function legendValues(){
      element.innerText = saveLabels[i];
      i++;
    });
+	 console.log(balance);
+	 console.log(totalBudget);
    labels[0].innerText += ' $' + balance.toFixed(2) + ' / $' + totalBudget.toFixed(2);
    labels[1].innerText += ' $' + getDifference(rentInputVal, rentSpent).toFixed(2) + ' / $' + rentInputVal.toFixed(2);
    labels[2].innerText += ' $' + getDifference(billsInputVal, billsSpent).toFixed(2) + ' / $' + billsInputVal.toFixed(2);
@@ -344,4 +350,85 @@ function drawChart(x) {
   // Display the chart inside the <div> element with id="piechart"
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
   chart.draw(data, options);
+};
+
+//Variables for localStorage
+var startingBudgetValues = [];
+var spentValues = [];
+let tableData = [];
+
+function insertStartValuesToLocalStorage()
+{
+   startingBudgetValues[0] = incomeInputVal;
+   startingBudgetValues[1] = rentInputVal;
+   startingBudgetValues[2] = billsInputVal;
+   startingBudgetValues[3] = groceriesInputVal;
+   startingBudgetValues[4] = entertainmentInputVal;
+   startingBudgetValues[5] = personalCareInputVal;
+   startingBudgetValues[6] = miscInputVal;
+
+   localStorage.setItem('startingValues', JSON.stringify(startingBudgetValues));
+};
+
+function insertSpentValuesToLocalStorage(){
+   spentValues[0] = balance;
+   spentValues[1] = rentSpent;
+   spentValues[2] = billsSpent;
+   spentValues[3] = groceriesSpent;
+   spentValues[4] = entertainmentSpent;
+   spentValues[5] = personalCareSpent;
+   spentValues[6] = miscSpent;
+
+   localStorage.setItem('spentValues', JSON.stringify(spentValues));
+};
+
+function storeTable(){
+   newTableData = document.querySelectorAll('.new-row');
+   console.log(newTableData);
+   i = 0;
+   newTableData.forEach(function(e){
+      tableData[i] = e.outerHTML;
+      console.log(e.outerHTML);
+      console.log(i);
+      i++;
+   })
+   console.log(tableData);
+   localStorage.setItem('tableData', JSON.stringify(tableData));
+};
+
+//load from localStorage if values exist
+if(localStorage.getItem('startingValues')){
+  startingBudgetValues = JSON.parse(localStorage.getItem('startingValues'));
+  totalBudget = startingBudgetValues[0];
+  rentInputVal = startingBudgetValues[1];
+  billsInputVal = startingBudgetValues[2];
+  groceriesInputVal = startingBudgetValues[3];
+  entertainmentInputVal = startingBudgetValues[4];
+  personalCareInputVal = startingBudgetValues[5];
+  miscInputVal = startingBudgetValues[6];
+  google.charts.setOnLoadCallback(function() {drawChart(0);});
+  legendValues();
+};
+
+if(localStorage.getItem('spentValues')){
+   spentValues = JSON.parse(localStorage.getItem('spentValues'));
+   balance = spentValues[0];
+   rentSpent = spentValues[1];
+   billsSpent = spentValues[2];
+   groceriesSpent = spentValues[3];
+   entertainmentSpent = spentValues[4];
+   personalCareSpent = spentValues[5];
+   miscSpent = spentValues[6];
+   google.charts.setOnLoadCallback(function() {drawChart(0);});
+   legendValues();
+};
+
+if(localStorage.getItem('tableData')){
+   let tableData = JSON.parse(localStorage.getItem('tableData'));
+   tableData.forEach(function(e){
+      newRow = document.createElement("tr");
+      newRow.classList.add('new-row');
+      expenseTable.appendChild(newRow);
+      newRow.outerHTML = e;
+   })
 };
