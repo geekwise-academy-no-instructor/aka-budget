@@ -86,19 +86,17 @@ newBudgetBtn.addEventListener("click", e => {
 				/*this if statement will:
 				1. Provide starting balances for the budget and display
 				them in the piechart legend. */
-				console.log("yay!");
 			} else{
 				alert("Your budget doesn't equal your income.");
-			}
+			};
 		} else{
 			alert("You didn't enter a valid number.");
-		}
+		};
 	};
 	if(newTableData.length !== 0) {
 		for(i = 0; i < newTableData.length; i++) {
 			expenseTable.removeChild(newTableData[i]);
 		};
-		console.log("I'm so triggered");
 	};
   newBudgetForm.reset();
 	rentSpent = 0;
@@ -108,8 +106,8 @@ newBudgetBtn.addEventListener("click", e => {
 	personalCareSpent = 0;
 	miscSpent = 0;
   $('#myModal').modal('hide');
-		google.charts.setOnLoadCallback(function() {drawChart(0);});
-		legendValues();
+	google.charts.setOnLoadCallback(function() {drawChart(0);});
+	legendValues();
 	insertStartValuesToLocalStorage();
   insertSpentValuesToLocalStorage();
   storeTable();
@@ -163,7 +161,7 @@ newExpenseForm.addEventListener("submit", (e) => {
 			break;
 	};
 	google.charts.setOnLoadCallback(function() {drawChart(0);});
-		legendValues();
+	legendValues();
 	insertSpentValuesToLocalStorage();
   storeTable();
 	newExpenseForm.reset();
@@ -214,8 +212,6 @@ function legendValues(){
      element.innerText = saveLabels[i];
      i++;
    });
-	 console.log(balance);
-	 console.log(totalBudget);
    labels[0].innerText += ' $' + balance.toFixed(2) + ' / $' + totalBudget.toFixed(2);
    labels[1].innerText += ' $' + getDifference(rentInputVal, rentSpent).toFixed(2) + ' / $' + rentInputVal.toFixed(2);
    labels[2].innerText += ' $' + getDifference(billsInputVal, billsSpent).toFixed(2) + ' / $' + billsInputVal.toFixed(2);
@@ -229,55 +225,55 @@ function legendValues(){
    }
    else {
       labels[0].style.color = "black";
-   }
+   };
 
    if(getDifference(rentInputVal, rentSpent)/rentInputVal <=.2){
       labels[1].style.color = "red";
    }
    else {
       labels[1].style.color = "black";
-   }
+   };
 
    if(getDifference(billsInputVal, billsSpent)/billsInputVal <=.2){
       labels[2].style.color = "red";
    }
    else {
       labels[2].style.color = "black";
-   }
+   };
 
    if(getDifference(entertainmentInputVal, entertainmentSpent)/entertainmentInputVal <=.2){
       labels[3].style.color = "red";
    }
    else {
       labels[3].style.color = "black";
-   }
+   };
 
    if(getDifference(groceriesInputVal, groceriesSpent)/groceriesInputVal <=.2){
       labels[4].style.color = "red";
    }
    else {
       labels[4].style.color = "black";
-   }
+   };
 
    if(getDifference(personalCareInputVal, personalCareSpent)/personalCareInputVal <=.2){
       labels[5].style.color = "red";
    }
    else {
       labels[5].style.color = "black";
-   }
+   };
 
    if(getDifference(miscInputVal, miscSpent)/miscInputVal <=.2){
       labels[6].style.color = "red";
    }
    else {
       labels[6].style.color = "black";
-   }
-}
+   };
+};
 
 // Get budget remaining for individual categories
 function getDifference(x, y){
    return x-y;
-}
+};
 
 // Load google charts
 google.charts.load('current', {'packages':['corechart']});
@@ -338,7 +334,7 @@ function drawChart(x) {
      ['Personal Care $' + getDifference(personalCareInputVal, personalCareSpent) + '/$' + personalCareInputVal, personalCareSpent],
      ['Misc $' + getDifference(miscInputVal, miscSpent) + '/$' + miscInputVal, miscSpent]
    ]);
-   }
+ };
   // Optional; add a title and set the width and height of the chart
   var options = {
                legend: 'none',
@@ -384,15 +380,11 @@ function insertSpentValuesToLocalStorage(){
 
 function storeTable(){
    newTableData = document.querySelectorAll('.new-row');
-   console.log(newTableData);
    i = 0;
    newTableData.forEach(function(e){
       tableData[i] = e.outerHTML;
-      console.log(e.outerHTML);
-      console.log(i);
       i++;
-   })
-   console.log(tableData);
+   });
    localStorage.setItem('tableData', JSON.stringify(tableData));
 };
 
@@ -430,5 +422,5 @@ if(localStorage.getItem('tableData')){
       newRow.classList.add('new-row');
       expenseTable.appendChild(newRow);
       newRow.outerHTML = e;
-   })
+   });
 };
