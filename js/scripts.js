@@ -340,7 +340,8 @@ function drawChart(x) {
                legend: 'none',
                 vAxis: {maxValue: 10},
                 chartArea: {width: '100%'},
-                backgroundColor: { fill:'transparent' }
+                backgroundColor: { fill:'transparent' },
+								colors: [ '#83e775', '#76a8e9', '#9966cc', '#cc66cc', '#f48484', '#f9b974', '#f6ef61' ]
    };
 
   // Display the chart inside the <div> element with id="piechart"

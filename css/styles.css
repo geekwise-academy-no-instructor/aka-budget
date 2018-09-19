@@ -1,3 +1,80 @@
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Roboto', sans-serif;
+}
+
+p, button, label, input, option, th, td {
+	font-family: 'Lato', sans-serif;
+}
+
+body {
+	background-color: #eff2ed;
+}
+
+.btn {
+	border-style: none;
+	background-color: ##f3fcea;
+	color: #3d3d3d;
+	font-weight: 700;
+}
+
+.btn.btn-submit:hover {
+	background-color: #76b267;
+	color: #fff;
+	font-weight: 700;
+}
+
+.btn:hover {
+	border-style: none;
+	background-color: #aee2a1;
+	color: #fff;
+	font-weight: 700;
+}
+
+/* header styles */
+
+header {
+	background-image: url(../img/money-header-img.jpg);
+	background-size: cover;
+	background-position: bottom;
+	position: relative;
+	height: 70vh;
+}
+
+header div {
+	margin-top: 70px;
+	background-color: rgba(0, 0, 0, .3);
+	padding: 50px;
+}
+
+header h1 {
+	margin-top: 0;
+}
+
+.header:before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: 0; bottom: 0;
+  background: rgba(0,0,0,.6);
+}
+
+header p {
+	color: #fff;
+	font-size: 35px;
+}
+
+/* new budget styles */
+.modal-body label {
+	margin-bottom: 1px;
+}
+
+.modal-body input {
+	margin-top: 2px;
+	margin-bottom: 5px;
+}
+
+
+/* new expense styles */
 .input-field {
   margin-right: 34px;
 }
@@ -10,6 +87,19 @@ table, th, td {
 table, form {
   margin-top: 30px;
   width: 100%;
+}
+
+
+/* piechart styles */
+.piechart-container {
+	margin-top: 0px;
+	margin-bottom: 5px;
+	height: 380px;
+}
+
+.legend-container {
+	margin-top: 94px;
+	margin-bottom: 5px;
 }
 
 #piechart {
@@ -29,31 +119,31 @@ table, form {
 }
 
 .totalRemaining-dot{
-   background-color: blue;
+   background-color: #83e775;
 }
 
 .rent-dot {
-   background-color: red;
+   background-color: #76a8e9;
 }
 
 .bills-dot {
-   background-color: orange;
+   background-color: #9966cc;
 }
 
 .entertainment-dot{
-   background-color: green;
+   background-color: #cc66cc;
 }
 
 .groceries-dot{
-   background-color: purple;
+   background-color: #f48484;
 }
 
 .personal-care-dot {
-   background-color: skyblue;
+   background-color: #f9b974;
 }
 
 .misc-dot {
-   background-color: pink;
+   background-color: #f6ef61;
 }
 
 .legend-total{
@@ -86,4 +176,17 @@ table, form {
 
 .hidden-legend{
    visibility: hidden;
+}
+
+
+/* footer styles */
+footer {
+	background-color: rgba(0,0,0,.3);
+	height: 50px;
+	margin-top: 20px;
+	margin-bottom: 0;
+}
+
+footer p {
+	color: #fff;
 }
