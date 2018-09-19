@@ -362,6 +362,8 @@ function insertStartValuesToLocalStorage()
    startingBudgetValues[4] = entertainmentInputVal;
    startingBudgetValues[5] = personalCareInputVal;
    startingBudgetValues[6] = miscInputVal;
+	 startingBudgetValues[7] = legendHeader.textContent;
+	 startingBudgetValues[8] = budgetDates.textContent;
 
    localStorage.setItem('startingValues', JSON.stringify(startingBudgetValues));
 };
@@ -398,6 +400,8 @@ if(localStorage.getItem('startingValues')){
   entertainmentInputVal = startingBudgetValues[4];
   personalCareInputVal = startingBudgetValues[5];
   miscInputVal = startingBudgetValues[6];
+	legendHeader.textContent = startingBudgetValues[7];
+	budgetDates.textContent = startingBudgetValues[8];
   google.charts.setOnLoadCallback(function() {drawChart(0);});
   legendValues();
 };
