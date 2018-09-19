@@ -7,6 +7,10 @@ let groceriesInput = document.querySelector("#groceriesInput");
 let entertainmentInput = document.querySelector("#entertainmentInput");
 let personalCareInput = document.querySelector("#personalCareInput");
 let miscInput = document.querySelector("#miscInput");
+let budgetType = newBudgetForm.budgetType;
+let budgetDates = document.querySelector("#budgetDates");
+let startDate = newBudgetForm.startDate;
+let endDate = newBudgetForm.endDate;
 let newBudgetBtn = document.querySelector("#newBudgetBtn");
 
 // declare values of HTML inputs as variables
@@ -27,7 +31,7 @@ let date = newExpenseForm.date;
 let amount = newExpenseForm.amount;
 let category = newExpenseForm.category;
 let memo = newExpenseForm.memo;
-let balance;
+let balance = 0;
 let newRow;
 let newTableData;
 let rentSpent = 0;
@@ -38,6 +42,7 @@ let personalCareSpent = 0;
 let miscSpent = 0;
 
 //Variables for Pie Chart
+var legendHeader = document.querySelector('#legendHeader');
 var labels = document.querySelectorAll('.legend-labels');
 var saveLabels = [];
 var i = 0;
@@ -52,19 +57,9 @@ var groceriesLabel = document.querySelector('.legend-groceries');
 var personalCareLabel = document.querySelector('.legend-personal-care');
 var miscLabel = document.querySelector('.legend-misc');
 
-/*
-let augustBudget = {
-	income: incomeInputVal,
-	rent: rentInputVal,
-	bills: billsInputVal,
-	groceries: groceriesInputVal,
-	entertainment: entertainmentInputVal,
-	personalCare: personalCareInputVal,
-	misc: miscInputVal
-};
-*/
-
 // Functions
+
+// Create a New Budget, Clear Old Data
 newBudgetBtn.addEventListener("click", e => {
 	incomeInputVal = parseFloat(incomeInput.value);
 	rentInputVal = parseFloat(rentInput.value);
@@ -79,6 +74,9 @@ newBudgetBtn.addEventListener("click", e => {
 	newRow.classList.add('new-row');
 	newTableData = document.querySelectorAll('.new-row');
 
+	legendHeader.textContent = `${budgetType.value} Budget`;
+	budgetDates.textContent = `${startDate.value} to ${endDate.value}`;
+
 	inputArray = [incomeInputVal, rentInputVal, billsInputVal, groceriesInputVal, entertainmentInputVal, personalCareInputVal, miscInputVal];
 	totalBudget = rentInputVal + billsInputVal + groceriesInputVal + entertainmentInputVal + personalCareInputVal + miscInputVal;
 
@@ -88,19 +86,17 @@ newBudgetBtn.addEventListener("click", e => {
 				/*this if statement will:
 				1. Provide starting balances for the budget and display
 				them in the piechart legend. */
-				console.log("yay!");
 			} else{
 				alert("Your budget doesn't equal your income.");
-			}
+			};
 		} else{
 			alert("You didn't enter a valid number.");
-		}
+		};
 	};
 	if(newTableData.length !== 0) {
 		for(i = 0; i < newTableData.length; i++) {
 			expenseTable.removeChild(newTableData[i]);
 		};
-		console.log("I'm so triggered");
 	};
   newBudgetForm.reset();
 	rentSpent = 0;
@@ -112,8 +108,12 @@ newBudgetBtn.addEventListener("click", e => {
   $('#myModal').modal('hide');
 	google.charts.setOnLoadCallback(function() {drawChart(0);});
 	legendValues();
+	insertStartValuesToLocalStorage();
+  insertSpentValuesToLocalStorage();
+  storeTable();
 });
 
+// Add New Expense to Table & Pie Chart
 newExpenseForm.addEventListener("submit", (e) => {
   e.preventDefault();
   newRow = document.createElement("tr");
@@ -162,9 +162,11 @@ newExpenseForm.addEventListener("submit", (e) => {
 	};
 	google.charts.setOnLoadCallback(function() {drawChart(0);});
 	legendValues();
+	insertSpentValuesToLocalStorage();
+  storeTable();
 	newExpenseForm.reset();
 }); // End of Submit Event
-console.log(newTableData);
+
 //Pie Chart Data
 
 //onclick events to view different charts
@@ -223,60 +225,55 @@ function legendValues(){
    }
    else {
       labels[0].style.color = "black";
-   }
+   };
 
    if(getDifference(rentInputVal, rentSpent)/rentInputVal <=.2){
       labels[1].style.color = "red";
    }
    else {
       labels[1].style.color = "black";
-   }
+   };
 
    if(getDifference(billsInputVal, billsSpent)/billsInputVal <=.2){
       labels[2].style.color = "red";
    }
    else {
       labels[2].style.color = "black";
-   }
+   };
 
    if(getDifference(entertainmentInputVal, entertainmentSpent)/entertainmentInputVal <=.2){
       labels[3].style.color = "red";
    }
    else {
       labels[3].style.color = "black";
-   }
+   };
 
    if(getDifference(groceriesInputVal, groceriesSpent)/groceriesInputVal <=.2){
       labels[4].style.color = "red";
    }
    else {
       labels[4].style.color = "black";
-   }
+   };
 
    if(getDifference(personalCareInputVal, personalCareSpent)/personalCareInputVal <=.2){
       labels[5].style.color = "red";
    }
    else {
       labels[5].style.color = "black";
-   }
+   };
 
    if(getDifference(miscInputVal, miscSpent)/miscInputVal <=.2){
       labels[6].style.color = "red";
    }
    else {
       labels[6].style.color = "black";
-   }
-}
+   };
+};
 
 // Get budget remaining for individual categories
 function getDifference(x, y){
    return x-y;
-}
-
-// Get total budget remaining
-// function getRemaining(){
-//    return totalBudget - (rentSpent + billsSpent + entertainmentSpent + groceriesSpent + personalCareSpent + miscSpent);
-// }
+};
 
 // Load google charts
 google.charts.load('current', {'packages':['corechart']});
@@ -337,7 +334,7 @@ function drawChart(x) {
      ['Personal Care $' + getDifference(personalCareInputVal, personalCareSpent) + '/$' + personalCareInputVal, personalCareSpent],
      ['Misc $' + getDifference(miscInputVal, miscSpent) + '/$' + miscInputVal, miscSpent]
    ]);
-   }
+ };
   // Optional; add a title and set the width and height of the chart
   var options = {
                legend: 'none',
@@ -350,4 +347,85 @@ function drawChart(x) {
   // Display the chart inside the <div> element with id="piechart"
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
   chart.draw(data, options);
-}
+};
+
+//Variables for localStorage
+var startingBudgetValues = [];
+var spentValues = [];
+let tableData = [];
+
+function insertStartValuesToLocalStorage()
+{
+   startingBudgetValues[0] = incomeInputVal;
+   startingBudgetValues[1] = rentInputVal;
+   startingBudgetValues[2] = billsInputVal;
+   startingBudgetValues[3] = groceriesInputVal;
+   startingBudgetValues[4] = entertainmentInputVal;
+   startingBudgetValues[5] = personalCareInputVal;
+   startingBudgetValues[6] = miscInputVal;
+	 startingBudgetValues[7] = legendHeader.textContent;
+	 startingBudgetValues[8] = budgetDates.textContent;
+
+   localStorage.setItem('startingValues', JSON.stringify(startingBudgetValues));
+};
+
+function insertSpentValuesToLocalStorage(){
+   spentValues[0] = balance;
+   spentValues[1] = rentSpent;
+   spentValues[2] = billsSpent;
+   spentValues[3] = groceriesSpent;
+   spentValues[4] = entertainmentSpent;
+   spentValues[5] = personalCareSpent;
+   spentValues[6] = miscSpent;
+
+   localStorage.setItem('spentValues', JSON.stringify(spentValues));
+};
+
+function storeTable(){
+   newTableData = document.querySelectorAll('.new-row');
+   i = 0;
+   newTableData.forEach(function(e){
+      tableData[i] = e.outerHTML;
+      i++;
+   });
+   localStorage.setItem('tableData', JSON.stringify(tableData));
+};
+
+//load from localStorage if values exist
+if(localStorage.getItem('startingValues')){
+  startingBudgetValues = JSON.parse(localStorage.getItem('startingValues'));
+  totalBudget = startingBudgetValues[0];
+  rentInputVal = startingBudgetValues[1];
+  billsInputVal = startingBudgetValues[2];
+  groceriesInputVal = startingBudgetValues[3];
+  entertainmentInputVal = startingBudgetValues[4];
+  personalCareInputVal = startingBudgetValues[5];
+  miscInputVal = startingBudgetValues[6];
+	legendHeader.textContent = startingBudgetValues[7];
+	budgetDates.textContent = startingBudgetValues[8];
+  google.charts.setOnLoadCallback(function() {drawChart(0);});
+  legendValues();
+};
+
+if(localStorage.getItem('spentValues')){
+   spentValues = JSON.parse(localStorage.getItem('spentValues'));
+   balance = spentValues[0];
+   rentSpent = spentValues[1];
+   billsSpent = spentValues[2];
+   groceriesSpent = spentValues[3];
+   entertainmentSpent = spentValues[4];
+   personalCareSpent = spentValues[5];
+   miscSpent = spentValues[6];
+   google.charts.setOnLoadCallback(function() {drawChart(0);});
+   legendValues();
+};
+
+if(localStorage.getItem('tableData')){
+   let tableData = JSON.parse(localStorage.getItem('tableData'));
+   tableData.forEach(function(e){
+      newRow = document.createElement("tr");
+      newRow.classList.add('new-row');
+      expenseTable.appendChild(newRow);
+      newRow.outerHTML = e;
+   });
+};
