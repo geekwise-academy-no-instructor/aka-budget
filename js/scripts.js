@@ -66,13 +66,13 @@ let augustBudget = {
 
 // Functions
 newBudgetBtn.addEventListener("click", e => {
-	incomeInputVal = parseInt(incomeInput.value);
-	rentInputVal = parseInt(rentInput.value);
-	billsInputVal = parseInt(billsInput.value);
-	groceriesInputVal = parseInt(groceriesInput.value);
-	entertainmentInputVal = parseInt(entertainmentInput.value);
-	personalCareInputVal = parseInt(personalCareInput.value);
-	miscInputVal = parseInt(miscInput.value);
+	incomeInputVal = parseFloat(incomeInput.value);
+	rentInputVal = parseFloat(rentInput.value);
+	billsInputVal = parseFloat(billsInput.value);
+	groceriesInputVal = parseFloat(groceriesInput.value);
+	entertainmentInputVal = parseFloat(entertainmentInput.value);
+	personalCareInputVal = parseFloat(personalCareInput.value);
+	miscInputVal = parseFloat(miscInput.value);
   balance = incomeInputVal;
 
 	newRow = document.createElement("tr");
@@ -134,27 +134,27 @@ newExpenseForm.addEventListener("submit", (e) => {
   newRow.appendChild(memoData);
   memoData.textContent = memo.value;
   newRow.appendChild(balanceData);
-  newBalance = balance - parseInt(amount.value);
-  balanceData.textContent = newBalance;
+  newBalance = balance - parseFloat(amount.value);
+  balanceData.textContent = newBalance.toFixed(2);
   balance = newBalance;
 	switch(category.value) {
 		case 'Rent':
-			rentSpent = rentSpent + parseInt(amount.value);
+			rentSpent = rentSpent + parseFloat(amount.value);
 			break;
 		case 'Bills':
-			billsSpent = billsSpent + parseInt(amount.value);
+			billsSpent = billsSpent + parseFloat(amount.value);
 			break;
 		case 'Groceries':
-			groceriesSpent = groceriesSpent + parseInt(amount.value);
+			groceriesSpent = groceriesSpent + parseFloat(amount.value);
 			break;
 		case 'Entertainment':
-			entertainmentSpent = entertainmentSpent + parseInt(amount.value);
+			entertainmentSpent = entertainmentSpent + parseFloat(amount.value);
 			break;
 		case 'PersonalCare':
-			personalCareSpent = personalCareSpent + parseInt(amount.value);
+			personalCareSpent = personalCareSpent + parseFloat(amount.value);
 			break;
 		case 'Misc':
-			miscSpent = miscSpent + parseInt(amount.value);
+			miscSpent = miscSpent + parseFloat(amount.value);
 			break;
 		default:
 			alert('error');
@@ -210,13 +210,13 @@ function legendValues(){
      element.innerText = saveLabels[i];
      i++;
    });
-   labels[0].innerText += ' $' + balance + ' / $' + totalBudget;
-   labels[1].innerText += ' $' + getDifference(rentInputVal, rentSpent) + ' / $' + rentInputVal;
-   labels[2].innerText += ' $' + getDifference(billsInputVal, billsSpent) + ' / $' + billsInputVal;
-   labels[3].innerText += ' $' + getDifference(entertainmentInputVal, entertainmentSpent) + ' / $' + entertainmentInputVal;
-   labels[4].innerText += ' $' + getDifference(groceriesInputVal, groceriesSpent) + ' / $' + groceriesInputVal;
-   labels[5].innerText += ' $' + getDifference(personalCareInputVal, personalCareSpent) + ' / $' + personalCareInputVal;
-   labels[6].innerText += ' $' + getDifference(miscInputVal, miscSpent) + ' / $' + miscInputVal;
+   labels[0].innerText += ' $' + balance.toFixed(2) + ' / $' + totalBudget.toFixed(2);
+   labels[1].innerText += ' $' + getDifference(rentInputVal, rentSpent).toFixed(2) + ' / $' + rentInputVal.toFixed(2);
+   labels[2].innerText += ' $' + getDifference(billsInputVal, billsSpent).toFixed(2) + ' / $' + billsInputVal.toFixed(2);
+   labels[3].innerText += ' $' + getDifference(entertainmentInputVal, entertainmentSpent).toFixed(2) + ' / $' + entertainmentInputVal.toFixed(2);
+   labels[4].innerText += ' $' + getDifference(groceriesInputVal, groceriesSpent).toFixed(2) + ' / $' + groceriesInputVal.toFixed(2);
+   labels[5].innerText += ' $' + getDifference(personalCareInputVal, personalCareSpent).toFixed(2) + ' / $' + personalCareInputVal.toFixed(2);
+   labels[6].innerText += ' $' + getDifference(miscInputVal, miscSpent).toFixed(2) + ' / $' + miscInputVal.toFixed(2);
    //change text color if low on money
    if(balance/totalBudget <=.2){
       labels[0].style.color = "red";
@@ -343,7 +343,8 @@ function drawChart(x) {
                legend: 'none',
                 vAxis: {maxValue: 10},
                 chartArea: {width: '100%'},
-                backgroundColor: { fill:'transparent' }
+                backgroundColor: { fill:'transparent' },
+								colors: [ '#83e775', '#76a8e9', '#9966cc', '#cc66cc', '#f48484', '#f9b974', '#f6ef61' ]
    };
 
   // Display the chart inside the <div> element with id="piechart"
