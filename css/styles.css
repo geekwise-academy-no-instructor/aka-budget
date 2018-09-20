@@ -102,6 +102,10 @@ table, form {
 	margin-bottom: 5px;
 }
 
+.legend-labels:hover {
+	cursor: pointer;
+}
+
 #piechart {
   min-height: 450px;
 }
@@ -172,10 +176,6 @@ table, form {
 
 .legend-misc{
    display: inline-block;
-}
-
-.hidden-legend{
-   visibility: hidden;
 }
 
 
