@@ -93,13 +93,13 @@ table, form {
 /* piechart styles */
 .piechart-container {
 	margin-top: 0px;
-	margin-bottom: 5px;
+	margin-bottom: 30px;
 	height: 380px;
 }
 
 .legend-container {
 	margin-top: 94px;
-	margin-bottom: 5px;
+	margin-bottom: 30px;
 }
 
 .legend-labels:hover {

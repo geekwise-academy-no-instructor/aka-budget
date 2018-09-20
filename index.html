@@ -70,10 +70,10 @@
 	<!-- section for pie chart and legend -->
 	<section class="pie-chart-and-legend">
 		<div class="row">
-			<div class="col-sm-6 col-md-5 col-md-offset-1 piechart-container">
+			<div class="col-xs-12 col-sm-6 col-md-5 col-md-offset-1 piechart-container">
 				<div id="piechart"></div>
 			</div>
-			<div class="col-sm-6 col-md-5 legend-container">
+			<div class="col-xs-12 col-sm-6 col-md-5 legend-container">
 				<div id="legend">
 					<h3 id="legendHeader"></h3>
 					<h4 id="budgetDates"></h4>
@@ -119,25 +119,30 @@
 	<!-- Add New Expense Form -->
 	<section>
     <div class="container">
-      <form id="newExpenseForm" name="newExpenseForm">
-        <label for="date">Date</label>
-        <input type="date" name="date" class="input-field" required>
-        <label for="amount">Amount</label>
-        <input type="number" step="0.01" name="amount" class="input-field" required>
-        <select id="formCategory" name="category" class="input-field" required>
-          <option value="Choose a Category" selected>Choose a Category</option>
-          <option value="Rent">Rent</option>
-          <option value="Bills">Bills</option>
-          <option value="Groceries">Groceries</option>
-          <option value="Entertainment">Entertainment</option>
-          <option value="PersonalCare">Personal Care</option>
-          <option value="Misc">Misc</option>
-        </select>
-        <label for="memo">Memo(optional)</label>
-        <input type="text" name="memo" class="input-field">
-        <button id="newExpenseButton" type="submit" class="btn btn-default btn-submit">Add New Expense</button>
-      </form>
-    </div>
+			<div class="row">
+				<div class="col-xs-10 col-sm-12">
+					<h3 class="text-center">Expenses</h3>
+		      <form id="newExpenseForm" name="newExpenseForm">
+		        <label for="date">Date</label>
+		        <input type="date" name="date" class="input-field" required>
+		        <label for="amount">Amount</label>
+		        <input type="number" step="0.01" name="amount" class="input-field" required>
+		        <select id="formCategory" name="category" class="input-field" required>
+		          <option value="Choose a Category" selected>Choose a Category</option>
+		          <option value="Rent">Rent</option>
+		          <option value="Bills">Bills</option>
+		          <option value="Groceries">Groceries</option>
+		          <option value="Entertainment">Entertainment</option>
+		          <option value="PersonalCare">Personal Care</option>
+		          <option value="Misc">Misc</option>
+		        </select>
+		        <label for="memo">Memo(optional)</label>
+		        <input type="text" name="memo" class="input-field">
+		        <button id="newExpenseButton" type="submit" class="btn btn-default btn-submit">Add New Expense</button>
+		      </form>
+				</div>
+			</div> <!-- /.row -->
+    </div> <!-- /.container -->
   </section>
 
 	<!-- Expense Table -->
