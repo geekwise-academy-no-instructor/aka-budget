@@ -33,7 +33,7 @@ body {
 /* header styles */
 
 header {
-	background-image: url(../img/money-header-img.jpg);
+	background-image: url(../img/money-header-img.png);
 	background-size: cover;
 	background-position: bottom;
 	position: relative;
@@ -46,9 +46,13 @@ header div {
 	padding: 50px;
 }
 
-header h1 {
-	margin-top: 0;
+.logo {
+    height: 100px;
 }
+
+/* header h1 {
+	margin-top: 0;
+} */
 
 .header:before {
   content: "";
